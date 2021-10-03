@@ -10,19 +10,19 @@ def getRepos(githubID):
     reposURL = requests.get(url = reposURL)
     reposURL = json.loads(reposURL.text)
 
-    for repo in reposURL:
-        repos.append(repo['name'])
+    for repo1 in reposURL:
+        repos.append(repo1['name'])
 
-    for repo in repos:
-        commitsURL = commitsAPILink + f'{githubID}/{repo}/commits'
-        jsonFile = json.loads(requests.get(url = commitsURL).text)
-        output.append(f'Repo: {repo}\nCommits: {len(jsonFile)}\n')
+    for repo2 in repos:
+        commitsURL = commitsAPILink + f'{githubID}/{repo2}/commits'
+        jsonFile = json.loads((requests.get(url = commitsURL)).text)
+        output.append(f'Repo: {repo2}\nCommits: {len(jsonFile)}\n')
 
     return output
 
 def main():
-    user = input("Enter user's Github ID: ")
-    for repo in getRepos(user):
+    idInput = input("Please enter the Github ID of the account you'd like to see the repos of: ")
+    for repo in getRepos(idInput):
         print(repo)
 
 if __name__ == '__main__':
