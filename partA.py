@@ -6,7 +6,7 @@ def getRepos(githubID):
     commitsAPILink = "https://api.github.com/repos/"
     repos = []
     output = []
-    reposURL = reposAPILink + f'{githubID}/' + 'repos'
+    reposURL = reposAPILink + f'{githubID}/repos'
     reposURL = requests.get(url = reposURL)
     reposURL = json.loads(reposURL.text)
 
